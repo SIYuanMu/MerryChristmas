@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜猜你会给谁送礼物</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 引用外部样式 -->
+</head>
+<body>
+    <div class="container">
+        <h1>猜猜你会给谁送礼物</h1>
+        <p>输入你的名字后点击按钮开始抽签，每人不能抽到自己。</p>
+        <input type="text" id="userName" placeholder="输入你的名字">
+        <button onclick="startDrawing()">抽签</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const names = [
+            "三万", "橘子", "陈迪", "Snow", "图图", 
+            "肚挺挺", "肛妹", "白白", "香香", 
+            "钟意", "momo", "周周", "香菜", "竹竹"
+        ];
+
+        let assignments = [];
+        let available = [...names];
+        let drawn = new Set();
+
+        function startDrawing() {
+            const userName = document.getElementById('userName').value.trim();
+
+            // 检查名字是否有效
+            if (!names.includes(userName)) {
+                document.getElementById('result').innerHTML = "<p style='color:red;'>名字不在抽签列表中，请重新输入。</p>";
+                return;
+            }
+
+            // 检查是否已经抽签
+            if (drawn.has(userName)) {
+                document.getElementById('result').innerHTML = "<p style='color:red;'>你已经抽过签了！</p>";
+                return;
+            }
+
+            // 抽签逻辑
+            let choices = available.filter(name => name !== userName);
+
+            if (choices.length === 0) {
+                document.getElementById('result').innerHTML = "<p style='color:red;'>无法完成抽签，请重试！</p>";
+                return;
+            }
+
+            let randomIndex = Math.floor(Math.random() * choices.length);
+            let selected = choices[randomIndex];
+
+            assignments.push({ from: userName, to: selected });
+            available = available.filter(name => name !== selected);
+            drawn.add(userName);
+
+            document.getElementById('result').innerHTML = `
+                <p><strong>${userName}</strong> 抽中了 <strong>${selected}</strong>！</p>
+                <p>你可以准备圣诞礼物啦！</p>
+            `;
+
+            // 检查是否所有人完成抽签
+            if (assignments.length === names.length) {
+                showFinalResults();
+            }
+        }
+
+        function showFinalResults() {
+            let output = "<h2>最终抽签结果</h2><ul>";
+            assignments.forEach(pair => {
+                output += `<li>${pair.from} → ${pair.to}</li>`;
+            });
+            output += "</ul>";
+            document.getElementById('result').innerHTML = output;
+        }
+    </script>
+</body>
+</html>

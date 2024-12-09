@@ -1,0 +1,84 @@
+/* 重置一些默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 设置基本字体和背景 */
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    height: 100vh;
+    background-image: url('santa-claus-5812443.jpg'); /* 本地图片路径 */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* 容器样式 */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* 页面标题 */
+h1 {
+    color: #FFD700;
+    font-size: 2.5em;
+    margin-top: 50px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+/* 输入框样式 */
+input {
+    padding: 10px;
+    font-size: 16px;
+    margin: 20px 0;
+    width: 60%;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+}
+
+input:focus {
+    outline: 2px solid #FFD700;
+}
+
+/* 按钮样式 */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #FF4500;
+}
+
+/* 结果显示区域 */
+#result {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid #FFD700;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    text-align: left;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
