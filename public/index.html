@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜猜你会给谁送礼物</title>
+    <!-- 引入 Firebase JS SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-database.js"></script>
+    <script defer src="app.js"></script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            background-image: url('santa-claus-5812443.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        h1 {
+            color: #FFD700;
+            font-size: 2.5em;
+            margin-top: 50px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #FFD700;
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            text-align: left;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #FF4500;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 60%;
+            border-radius: 5px;
+            border: none;
+        }
+
+        input:focus {
+            outline: 2px solid #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <h1>猜猜你会给谁送礼物</h1>
+    <p>输入你的名字后点击按钮开始抽签，每人不能抽到自己。</p>
+    <input type="text" id="userName" placeholder="输入你的名字">
+    <button onclick="startDrawing()">抽签</button>
+    <div id="result"></div>
+</body>
+</html>
